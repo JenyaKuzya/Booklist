@@ -1,0 +1,14 @@
+program Project1;
+
+uses
+  Vcl.Forms,
+  Records in 'Records.pas' {FRecord};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFRecord, FRecord);
+  Application.Run;
+end.

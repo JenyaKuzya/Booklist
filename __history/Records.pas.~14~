@@ -1,0 +1,161 @@
+unit Records;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.DBGrids;
+
+type
+  TFRecord = class(TForm)
+    ESearch: TEdit;
+    BSearch: TButton;
+    RAuthor: TRadioButton;
+    RBook: TRadioButton;
+    Label1: TLabel;
+    BAdd: TButton;
+    BDelete: TButton;
+    BChange: TButton;
+    StringGrid1: TStringGrid;
+    ComboBox1: TComboBox;
+    Label2: TLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure RButtonClick(Sender: TObject);
+    procedure BAddClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure ESearchClick(Sender: TObject);
+    procedure BDeleteClick(Sender: TObject);
+    procedure DeleteARow(Grid: TStringGrid; ARow: Integer);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure BChangeClick(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRecord: TFRecord;
+
+implementation
+
+{$R *.dfm}
+
+uses Add, Lib;
+
+type
+  TMyGrid = class(TCustomGrid);
+
+procedure TFRecord.DeleteARow(Grid: TStringGrid; ARow: Integer);
+begin
+  TMyGrid(Grid).DeleteRow(ARow);
+end;
+
+procedure TFRecord.BAddClick(Sender: TObject);
+begin
+  FAdd.Show;
+  FAdd.BCompleteAdd.Visible := True;
+  FAdd.BCompleteChange.Visible := False;
+  FAdd.EAuthor.Text := '';
+  FAdd.EName.Text := '';
+  FAdd.EYear.Text := '';
+end;
+
+procedure TFRecord.BChangeClick(Sender: TObject);
+var
+  i: Integer;
+begin
+  FAdd.Show;
+  FAdd.BCompleteAdd.Visible := False;
+  FAdd.BCompleteChange.Visible := True;
+  q := first;
+  for i := 1 to StringGrid1.Row do
+    q := q^.next;
+  FAdd.EAuthor.Text := q^.Element.Author;
+  FAdd.EName.Text := q^.Element.NameOfBook;
+  FAdd.EYear.Text := IntToStr(q^.Element.Year);
+end;
+
+procedure TFRecord.BDeleteClick(Sender: TObject);
+begin
+  DeleteBook(first, StringGrid1.row);
+  DeleteARow(StringGrid1, StringGrid1.Row);
+end;
+
+procedure TFRecord.ComboBox1Change(Sender: TObject);
+begin
+  if Text = 'Времени добавления' then
+    showdata(first, StringGrid1);
+  if Text = 'Автору' then
+    sortlist(second, 0);
+end;
+
+procedure TFRecord.ESearchClick(Sender: TObject);
+begin
+  if (ESearch.Text = 'Автор') or (ESearch.Text = 'Название книги') then
+    ESearch.Text := '';
+end;
+
+procedure TFRecord.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Rewrite(f);
+  q := first;
+  while q^.next <> nil do
+  begin
+    q := q^.next;
+    write(f, q^.Element);
+  end;
+  CloseFile(f);
+  deletelist(first);
+end;
+
+procedure TFRecord.FormCreate(Sender: TObject);
+begin
+  RBook.Checked := True;
+  with ComboBox1 do
+  begin
+    items.add('Времени добавления');
+    items.add('Автору');
+    items.add('Названию');
+  end;
+  with StringGrid1 do
+  begin
+    Cells[0,0] := 'Автор';
+    Cells[1,0] := 'Название книги';
+    Cells[2,0] := 'Год издания';
+  end;
+  New(first);
+  q := first;
+  q^.prev := nil;
+  q^.next := nil;
+  AssignFile(f,'Books.txt');
+  Reset(F);
+  while not Eof(F) do
+  begin
+    New(q^.next);
+    q^.next^.prev := q;
+    q := q^.next;
+    read(f, q^.Element);
+    q^.next := nil;
+  end;
+  showdata(first, StringGrid1);
+  StringGrid1.Row := 1;
+  CloseFile(f);
+end;
+
+procedure TFRecord.RButtonClick(Sender: TObject);
+begin
+  ESearch.Text := (Sender as TRadioButton).Caption;
+end;
+
+procedure TFRecord.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  if ARow = 0 then
+    CanSelect := False;
+end;
+
+end.

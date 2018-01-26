@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.675,C:\Users\XTreme.ws\Documents\Embarcadero\Studio\Projects\Records.dfm=C:\Users\XTreme.ws\Documents\ОАиП\LR6\Records.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.245,=C:\Users\XTreme.ws\Documents\ОАиП\LR6\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.972,=C:\Users\XTreme.ws\Documents\ОАиП\LR6\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.048,C:\Users\XTreme.ws\Documents\ОАиП\LR6\Unit1.dfm=C:\Users\XTreme.ws\Documents\ОАиП\LR6\Add.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.688,=C:\Users\XTreme.ws\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.236,C:\Users\XTreme.ws\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\XTreme.ws\Documents\Embarcadero\Studio\Projects\Records.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.236,C:\Users\XTreme.ws\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\XTreme.ws\Documents\Embarcadero\Studio\Projects\Records.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.675,C:\Users\XTreme.ws\Documents\Embarcadero\Studio\Projects\Records.pas=C:\Users\XTreme.ws\Documents\ОАиП\LR6\Records.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.327,C:\Users\XTreme.ws\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\XTreme.ws\Documents\ОАиП\LR6\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.444,=C:\Users\XTreme.ws\Documents\ОАиП\LR6\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.048,C:\Users\XTreme.ws\Documents\ОАиП\LR6\Unit1.pas=C:\Users\XTreme.ws\Documents\ОАиП\LR6\Add.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.188,C:\Users\XTreme.ws\Documents\ОАиП\LR6\Unit1.pas=C:\Users\XTreme.ws\Documents\ОАиП\LR6\Lib.pas</Transaction>
+  </Transactions>
+</BorlandProject>
