@@ -1,7 +1,8 @@
 object FRecord: TFRecord
   Left = 384
   Top = 183
-  Caption = #1047#1072#1087#1080#1089#1080
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Booklist'
   ClientHeight = 506
   ClientWidth = 728
   Color = clBtnFace
@@ -30,7 +31,7 @@ object FRecord: TFRecord
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 488
+    Left = 408
     Top = 84
     Width = 106
     Height = 18
@@ -45,7 +46,7 @@ object FRecord: TFRecord
   object ESearch: TEdit
     Left = 48
     Top = 120
-    Width = 193
+    Width = 209
     Height = 21
     TabOrder = 0
     Text = #1053#1072#1079#1074#1072#1085#1080#1077' '#1082#1085#1080#1075#1080
@@ -80,8 +81,8 @@ object FRecord: TFRecord
     OnClick = RButtonClick
   end
   object BAdd: TButton
-    Left = 310
-    Top = 25
+    Left = 606
+    Top = 27
     Width = 75
     Height = 25
     Caption = #1044#1086#1073#1072#1074#1080#1090#1100
@@ -89,8 +90,8 @@ object FRecord: TFRecord
     OnClick = BAddClick
   end
   object BDelete: TButton
-    Left = 422
-    Top = 25
+    Left = 606
+    Top = 72
     Width = 75
     Height = 25
     Caption = #1059#1076#1072#1083#1080#1090#1100
@@ -98,8 +99,8 @@ object FRecord: TFRecord
     OnClick = BDeleteClick
   end
   object BChange: TButton
-    Left = 534
-    Top = 25
+    Left = 606
+    Top = 118
     Width = 75
     Height = 25
     Caption = #1048#1079#1084#1077#1085#1080#1090#1100
@@ -108,7 +109,7 @@ object FRecord: TFRecord
   end
   object StringGrid1: TStringGrid
     Left = 48
-    Top = 168
+    Top = 161
     Width = 633
     Height = 321
     ColCount = 3
@@ -116,18 +117,19 @@ object FRecord: TFRecord
     FixedCols = 0
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
+    ScrollBars = ssVertical
     TabOrder = 7
     OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       241
       255
-      113)
+      135)
     RowHeights = (
       24
       24)
   end
   object ComboBox1: TComboBox
-    Left = 488
+    Left = 408
     Top = 120
     Width = 145
     Height = 21
